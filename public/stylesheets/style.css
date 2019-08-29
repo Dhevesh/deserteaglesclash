@@ -1,0 +1,8 @@
+@font-face{
+    font-family: clashOfClans;
+    src: url(fonts/Supercell-magic-webfont.woff);
+}
+
+.clash-font{
+    font-family: clashOfClans;
+}

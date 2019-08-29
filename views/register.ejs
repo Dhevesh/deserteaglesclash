@@ -1,0 +1,9 @@
+<%include partials/header%>
+<h1>Register New User</h1>
+<form action="/register" method="POST">
+    <input type="text" name="member[username]" placeholder="username">
+    <input type="text" name="member[name]" placeholder="name">
+    <input type="password" name="member[password]" placeholder="password">
+    <button>Register</button>
+</form>
+<%include partials/footer%>
