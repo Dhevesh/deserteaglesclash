@@ -7,6 +7,16 @@ body{
     background-color: #000;
 }
 
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .site-content {
+    flex: 1;
+  }
+
 .clash-font{
     font-family: clashOfClans;
 }
