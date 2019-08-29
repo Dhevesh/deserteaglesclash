@@ -11,10 +11,10 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static("public"));
 mongoose.connect("mongodb://localhost:27017/clash_db", { useNewUrlParser : true });
-const token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjNmMzNjYzEzLTA5MjctNDQyOC04MDJjLWM1MmYwNzIyMGQxNiIsImlhdCI6MTU2NjA4Mjc2MSwic3ViIjoiZGV2ZWxvcGVyLzk1NTBhOWQ1LTExZjgtYTFmYy1jYzk2LTU5NzVhOGEyMWMwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjIyOC4yNDIuOTAiXSwidHlwZSI6ImNsaWVudCJ9XX0.PtSZwWR2fBm1r7XYWvyPBYxkA5SADlaKan9vS-PqDlS12Tt_lx090od-8BRbBLiXUdaf-0wNINhLh7N3ndmz-A";
 
 var clanTag = encodeURIComponent("#VOPVRCRG");
 var playerTag;
+const token = process.env.CLASHAPITOKEN;
 
 var myClan = {
     uri: 'https://api.clashofclans.com/v1/clans/'+clanTag,
@@ -101,6 +101,7 @@ app.get("*",(req,res)=>{
 });
 
 // LISTEN ROUTE
-app.listen(3000, process.env.IP,()=>{
-    console.log("app started on port 3000");
+var port = process.env.PORT || 3000;
+app.listen(port, process.env.IP,()=>{
+    console.log("app started on port:",port);
 });
