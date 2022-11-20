@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%include ../partials/header%>
+		<link rel="stylesheet" href="../stylesheets/player.css" />
+	</head>
+	<body>
+		<%include ../partials/nav%>
+		<div class="container">
+			<a href="/members"><-Back</a>
+			<div class="player-border">
+				<div class="player-card">
+					<div class="player-card-body">
+						<div id="player_personal_info">
+							<h3 class="clash-font d-sm-inline"><%=player.name%></h3>
+							<%if (player.role != "leader" && player.role != "player"){ %> <%if (player.role == "admin") {%>
+							<span>Elder</span>
+							<%}else if(player.role == "coLeader"){ %>
+							<span>Co-Leader</span>
+							<%}%> <%} else{ %>
+							<span class=""><%=player.role%></span>
+							<%} %>
+						</div>
+
+						<div class="player-label" id="player_labels">
+							<%player.labels.forEach((label)=>{%>
+							<div class=""><img src="<%=label.iconUrls.small%>" alt="" srcset="" /></div>
+							<%})%>
+						</div>
+						<div id="war_status">
+							<span class="player-card-label">War Status:</span>
+							<span class="player-card-badge"><%=player.warPreference%></span>
+						</div>
+					</div>
+					<div class="player-card-body">
+						<div id="league">
+							<span class="">
+								<%if(typeof(player.league) != 'undefined'){%>
+								<img src="<%=player.league.iconUrls.small%>" alt="league.png" />
+								<%} else{ %>
+								<img src="https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png" alt="unranked.png" />
+								<%}%></span
+							>
+							<span class="player-card-badge"><%=player.trophies%></span>
+						</div>
+						<div>
+							<span> All time best: </span>
+							<span class="player-card-badge"> <%=player.bestTrophies%> </span>
+						</div>
+						<div>
+							<span>War Stars Won:</span>
+							<span class="player-card-badge"><%=player.warStars%></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="player-card-gutter" id="">
+					<div id="troops_donated">
+						<span class="player-card-label">Troops Donated:</span>
+						<span class="player-card-badge"><%=player.donations%></span>
+					</div>
+					<div id="troops_received">
+						<span class="player-card-label">Troops Received:</span>
+						<span class="player-card-badge"><%=player.donationsReceived%></span>
+					</div>
+					<div id="attacks_won">
+						<span class="player-card-label">Attacks Won:</span>
+						<span class="player-card-badge"><%=player.attackWins%></span>
+					</div>
+					<div id="defenses_won">
+						<span class="player-card-label">Defenses Won:</span>
+						<span class="player-card-badge"><%=player.defenseWins%></span>
+					</div>
+				</div>
+			</div>
+			<div class="player-border" id="army_div">
+				<div class="player-card">
+					<div class="player-card-body" id="army_heroes">
+						<div class="player-border" id="town_hall">
+							<div>
+								<span>Townhall:</span>
+								<span><%=player.townHallLevel%></span>
+							</div>
+							<div>
+								<span>Weapon Level:</span>
+								<span><%=player.townHallWeaponLevel%></span>
+							</div>
+						</div>
+						<div class="player-border" id="hero_div">
+							<div>Heroes:</div>
+
+							<div class="player-card-heroes">
+								<%player.heroes.forEach((hero)=>{%> <%if (hero.village == "home"){%>
+								<span><%=hero.name%></span>
+								<span><%=hero.level%></span>
+								<span><%=hero.maxLevel%></span>
+								<%}%> <%})%>
+							</div>
+						</div>
+						<div id="hero_pets"></div>
+					</div>
+
+					<div id="army_troops" class="player-card-troops">
+						<div class="player-border">
+							<div>Army</div>
+							<div>
+								<% player.troops.forEach((troop)=>{ %> <%if(troop.village == "home"){%>
+
+								<span><%=troop.name%></span>
+
+								<span><%=troop.level%></span>
+
+								<span><%=troop.maxLevel%></span>
+
+								<%}%> <% }) %>
+							</div>
+						</div>
+						<div class="player-border">
+							<div>Spells</div>
+							<div>
+								<%player.spells.forEach((spell)=>{%>
+								<span><%=spell.name%></span>
+								<span><%=spell.level%></span>
+								<span><%=spell.maxLevel%></span>
+								<%})%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<%include ../partials/footer%>
+	</body>
+</html>

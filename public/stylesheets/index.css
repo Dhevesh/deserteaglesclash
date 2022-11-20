@@ -4,7 +4,8 @@
 }
 
 body{
-    background-color: #000;
+    background-color: #001219;
+    color: #ee9b00;
 }
 
 .site {
@@ -21,26 +22,62 @@ body{
     font-family: clashOfClans;
 }
 
-.name{
-    font-size: 1em;
-    padding-bottom: 10px;
-    
+/*bootstrap overrides*/
+.leader-badge{
+    width: fit-content;
+    background: #ee9b00;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.co-leader-badge{
+    width: fit-content;
+    background: #0a9396;
+    padding: 3px;
+    border-radius: 4px;
 }
 
 .clan-tag{
     font-weight: bold;
 }
 
+.custom-btn{
+    background: #0a9396;
+    background: #005f73;
+    color: #ee9b00;
+}
+
+.custom-btn:hover, .custom-btn:focus{
+    background: #005f73;
+    background: #0a9396;
+    color: #e9d8a6;
+}
+
+.custom-table{
+    color: #001219;
+}
+
+.custom-table a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.custom-table a:hover, .rank-table a:focus{
+    text-decoration: underline;
+    color: #22333b;
+}
+
+
 .gold-rank{
-    background-color: gold;
+    background: gold !important;
 }
 
 .silver-rank{
-    background-color: silver;
+    background: silver;
 }
 
 .copper-rank{
-    background-color: chocolate;
+    background: chocolate;
 }
 
 .img-xsmall{
@@ -91,6 +128,19 @@ body{
 
 .member-role-leader{
     font-weight: bold;
+}
+
+.player-name h3{
+    color: #ee9b00;
+    font-size: 2em;
+}
+
+.player-name span{
+    
+}
+
+.troop-table{
+    
 }
 
 @media (min-width: 576px){

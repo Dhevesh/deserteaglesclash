@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="/stylesheets/index.css" />
+		<title>Clash Manager</title>
+	</head> -->
+	<%include partials/header%>
+	<body>
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<img src="<%=clan.badgeUrls.medium%>" alt="badge.png" class="img-xsmall" />
+				<span class="name clash-font"><%=clan.name%></span>
+				<img src="/assets/images/gladiatorqueen.png" alt="gladiatorqueen.png" class="img-small d-none d-sm-inline" />
+				<hr />
+				<p><%=clan.description%></p>
+				<p class="text-center">
+					<a class="btn custom-btn btn-lg clash-font" href="/members">View Members</a>
+				</p>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-md-3 d-none d-md-block">
+					<img src="/assets/images/gladiatorbk.png" alt="gladiatorking.png" class="img-medium img-responsive" />
+				</div>
+				<div class="col-md-6">
+					<table class="table clash-font custom-table">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Rank</th>
+								<th scope="col">Name</th>
+								<th scope="col">Position</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% function getClanRole(role){if (role == "admin"){role = "elder";} return role;} %>
+							<tr class="gold-rank">
+								<td><%=clan.memberList[0].clanRank%></td>
+								<td><a href=""><%=clan.memberList[0].name%></a></td>
+								<td class="member-role"><%=getClanRole(clan.memberList[0].role)%></td>
+							</tr>
+							<tr class="silver-rank">
+								<td><%=clan.memberList[1].clanRank%></td>
+								<td><a href=""><%=clan.memberList[1].name%></a></td>
+								<td class="member-role"><%=getClanRole(clan.memberList[1].role)%></td>
+							</tr>
+							<tr class="copper-rank">
+								<td><%=clan.memberList[2].clanRank%></td>
+								<td><a href=""><%=clan.memberList[2].name%></a></td>
+								<td class="member-role"><%=getClanRole(clan.memberList[2].role)%></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-3 d-none d-md-block">
+					<img src="/assets/images/grandwarden.png" alt="grandwarden.png" class="img-medium" />
+				</div>
+			</div>
+		</div>
+
+		<%include partials/footer%>
+	</body>
+</html>
