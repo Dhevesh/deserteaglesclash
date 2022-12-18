@@ -31,33 +31,24 @@
 					<img src="/assets/images/gladiatorbk.png" alt="gladiatorking.png" class="img-medium img-responsive" />
 				</div>
 				<div class="col-md-6">
-					<table class="table clash-font custom-table">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Rank</th>
-								<th scope="col">Name</th>
-								<th scope="col">Position</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% function getClanRole(role){if (role == "admin"){role = "elder";} return role;} %>
-							<tr class="gold-rank">
-								<td><%=clan.memberList[0].clanRank%></td>
-								<td><a href=""><%=clan.memberList[0].name%></a></td>
-								<td class="member-role"><%=getClanRole(clan.memberList[0].role)%></td>
-							</tr>
-							<tr class="silver-rank">
-								<td><%=clan.memberList[1].clanRank%></td>
-								<td><a href=""><%=clan.memberList[1].name%></a></td>
-								<td class="member-role"><%=getClanRole(clan.memberList[1].role)%></td>
-							</tr>
-							<tr class="copper-rank">
-								<td><%=clan.memberList[2].clanRank%></td>
-								<td><a href=""><%=clan.memberList[2].name%></a></td>
-								<td class="member-role"><%=getClanRole(clan.memberList[2].role)%></td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="clash-font home-leaderboard">
+						<% function getClanRole(role){if (role == "admin"){role = "elder";} return role;} %>
+							<div class="gold-rank home-leaderboard-row">
+								<span><%=clan.memberList[0].clanRank%></span>
+								<span><a href=""><%=clan.memberList[0].name%></a></span>
+								<span class="member-role"><%=getClanRole(clan.memberList[0].role)%></span>
+							</div>
+							<div class="silver-rank home-leaderboard-row">
+								<span><%=clan.memberList[1].clanRank%></span>
+								<span><a href=""><%=clan.memberList[1].name%></a></span>
+								<span class="member-role"><%=getClanRole(clan.memberList[1].role)%></span>
+							</div>
+							<div class="copper-rank home-leaderboard-row">
+								<span><%=clan.memberList[2].clanRank%></span>
+								<span><a href=""><%=clan.memberList[2].name%></a></span>
+								<span class="member-role"><%=getClanRole(clan.memberList[2].role)%></span>
+							</div>
+					</div>
 				</div>
 				<div class="col-md-3 d-none d-md-block">
 					<img src="/assets/images/grandwarden.png" alt="grandwarden.png" class="img-medium" />

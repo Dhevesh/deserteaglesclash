@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const apiKey_one =
+	'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImRhNmY5MDNlLTdmMDgtNGEyNi1hMTNlLTlhZTNkZDcxZDZmZCIsImlhdCI6MTY3MTQwMjA4Nywic3ViIjoiZGV2ZWxvcGVyLzk1NTBhOWQ1LTExZjgtYTFmYy1jYzk2LTU5NzVhOGEyMWMwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjEwMi4yNDguNC4xNjkiXSwidHlwZSI6ImNsaWVudCJ9XX0.SqMyTYDNXobcUjsl3EddmG0SRFaPpbd6CBltSI3fEHlPy6K9vQ2OQUzvaFkNk9ICzpII_JUd39s6CJCHrpQ7wg';
+const apiKey_two =
+	'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImYyODQ1YzYyLTliNTYtNDA5ZS1iYzVkLTg2YmNhNTY5MGJiZCIsImlhdCI6MTY3MTIyMDA3NSwic3ViIjoiZGV2ZWxvcGVyLzk1NTBhOWQ1LTExZjgtYTFmYy1jYzk2LTU5NzVhOGEyMWMwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjE4NS4yMDMuMTIyLjE5NyJdLCJ0eXBlIjoiY2xpZW50In1dfQ.J7GgBKDDV_nHR_e_R2J6d-TATtYshk6Gwnp9EubEMdxlYC_VozYriseTiqJ6bSwzj7mNXIhI16dtXgyE3S9xcw';
 
 const User = require('./models/user');
 
@@ -15,8 +20,7 @@ app.use(express.static('public'));
 //var clanTag = encodeURIComponent("#VOPVRCRG");
 var clanTag = encodeURIComponent('#QUL9UVR2');
 var playerTag;
-const token =
-	'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjY4MTRlMGI1LTVkNGMtNDhhNC1iYTkxLTgyZmNhY2VlMmYwZCIsImlhdCI6MTY2ODg4NjU4Niwic3ViIjoiZGV2ZWxvcGVyLzk1NTBhOWQ1LTExZjgtYTFmYy1jYzk2LTU5NzVhOGEyMWMwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjEwMi4yNDguNzQuMTUiXSwidHlwZSI6ImNsaWVudCJ9XX0.2Ckr8MnHKqKz1i1JcCwcbpiYa3CxqzBmDjzHsOehKCMpBd_cqIfFJCxTYFx2mpzFYwzGeQF_JkI1QoAvdaQMDA';
+const token = `Bearer ${apiKey_one}`;
 
 var myClan = {
 	uri: 'https://api.clashofclans.com/v1/clans/' + clanTag,
@@ -28,6 +32,8 @@ var myClan = {
 	},
 	json: true,
 };
+
+const troops = require('./models/home_troops.json');
 
 // ROUTES
 // INDEX
@@ -89,9 +95,9 @@ app.get('/members/:id', (req, res) => {
 	};
 	rp(player)
 		.then((foundPlayer) => {
-			res.render('./player/player_home', { player: foundPlayer });
+			res.render('./player/player_home', { player: foundPlayer, troops: troops });
 		})
-		.catch((err) => console.log(err));
+		.catch((err) => console.log(err + 'new_error'));
 });
 
 // USER ROUTES
@@ -119,7 +125,7 @@ app.get('*', (req, res) => {
 });
 
 // LISTEN ROUTE
-var port = process.env.PORT || 8090;
+var port = process.env.PORT || 8000;
 app.listen(port, process.env.IP, () => {
 	console.log('app started on port:', port);
 });

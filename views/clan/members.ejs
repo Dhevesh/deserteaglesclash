@@ -1,4 +1,4 @@
-<%include ../partials/header%>
+<%include ../partials/header%> <%include ../partials/nav%>
 <div class="container">
 	<div class="name mt-3 mb-3">
 		<img src="<%=clan.badgeUrls.small%>" alt="badge.png" />
@@ -17,8 +17,8 @@
 		<tbody>
 			<%clan.memberList.forEach((member)=>{ %>
 			<tr>
-				<% var c = ""; %> 
-                <% if (member.clanRank > member.previousClanRank){c = "fas fa-sort-up fa-green"; } else if (member.clanRank < member.previousClanRank){ c = "fas fa-sort-down fa-red";} else{c = "fas fa-equals fa-grey"; } %>
+				<% var c = ""; %> <% if (member.clanRank > member.previousClanRank){c = "fas fa-sort-up fa-green"; } else if (member.clanRank < member.previousClanRank){ c = "fas fa-sort-down fa-red";} else{c
+				= "fas fa-equals fa-grey"; } %>
 				<td>
 					<%=member.clanRank%><span><i class="<%=c%> font-space"></i></span>
 				</td>
@@ -26,18 +26,9 @@
 				<td><%=member.expLevel%></td>
 				<td>
 					<span class="clash-font"> <a href="/members/%23<%=member.tag.substring(1,100)%>"><%=member.name%></a></span>
-					<% var memberRole = member.role; var memberClass="member-role" %> 
-                    <%if (memberRole != "leader" && memberRole != "member"){ %> 
-                        <%if (memberRole == "admin") {%> 
-                            <% memberRole = "Elder" %>
-					    <%}else if(member.role =="coLeader"){ %> 
-                            <% memberRole = "Co-Leader"; memberClass="co-leader-badge" %> 
-                        <%} else{ %> 
-                            <%memberRole = member.role%> %>
-                        <%}%>
-                    <%} else if(member.role=="leader"){ %>
-                        <%memberRole = "Leader"; memberClass="leader-badge"%>
-                        <%}%>
+					<% var memberRole = member.role; var memberClass="member-role" %> <%if (memberRole != "leader" && memberRole != "member"){ %> <%if (memberRole == "admin") {%> <% memberRole = "Elder" %>
+					<%}else if(member.role =="coLeader"){ %> <% memberRole = "Co-Leader"; memberClass="co-leader-badge" %> <%} else{ %> <%memberRole = member.role%> %> <%}%> <%} else if(member.role=="leader"){
+					%> <%memberRole = "Leader"; memberClass="leader-badge"%> <%}%>
 					<div class="<%=memberClass%>"><%=memberRole%></div>
 				</td>
 				<td>

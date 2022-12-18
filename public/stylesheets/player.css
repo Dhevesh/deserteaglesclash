@@ -74,3 +74,43 @@
     flex-direction: column;
 }
 
+.player-card-troop-ico{
+    height: 48px;
+    width: 48px;
+    border: 1px solid #d6ccc2;
+    border-radius: 4px;
+}
+
+.achievement-star{
+    color: gold;
+    font-size: 30px;
+    font-family: Times;
+}
+
+.achievement-progress-div{
+    width: fit-content;
+    background: orange !important;
+}
+.achievement-progress-bar{
+    width: fit-content;
+}
+
+.player-img {
+    display: block;
+}
+
+.player-img-thumbnail {
+    position: relative;
+    display: inline-block;
+}
+
+.player-thumbnail-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+}

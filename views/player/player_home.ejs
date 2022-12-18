@@ -20,27 +20,31 @@
 							<%}%> <%} else{ %>
 							<span class=""><%=player.role%></span>
 							<%} %>
+							<div class="player-label" id="player_labels">
+								<%player.labels.forEach((label)=>{%>
+								<div class=""><img src="<%=label.iconUrls.small%>" alt="<%label.name%>" srcset="" /></div>
+								<%})%>
+							</div>
 						</div>
 
-						<div class="player-label" id="player_labels">
-							<%player.labels.forEach((label)=>{%>
-							<div class=""><img src="<%=label.iconUrls.small%>" alt="" srcset="" /></div>
-							<%})%>
-						</div>
 						<div id="war_status">
 							<span class="player-card-label">War Status:</span>
 							<span class="player-card-badge"><%=player.warPreference%></span>
 						</div>
 					</div>
+
 					<div class="player-card-body">
-						<div id="league">
-							<span class="">
+						<div id="league" class="d-flex flex-column align-items-center">
+							<div class="player-img-thumbnail">
 								<%if(typeof(player.league) != 'undefined'){%>
-								<img src="<%=player.league.iconUrls.small%>" alt="league.png" />
+								<img class="player-img" src="<%=player.league.iconUrls.medium%>" alt="league.png" />
 								<%} else{ %>
 								<img src="https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png" alt="unranked.png" />
-								<%}%></span
-							>
+								<%}%> <%if ("legendStatistics" in player){%>
+								<div class="player-thumbnail-caption"><%=player.legendStatistics.currentSeason.rank%></div>
+								<%}%>
+							</div>
+
 							<span class="player-card-badge"><%=player.trophies%></span>
 						</div>
 						<div>
@@ -73,6 +77,36 @@
 					</div>
 				</div>
 			</div>
+
+			<%if ("legendStatistics" in player){%>
+
+			<div id="legend_stats" class="player-border d-flex justify-content-between">
+				<div id="legend_best">
+					<div>
+						<span></span>
+						<span><%=player.legendStatistics.bestSeason.rank%></span>
+					</div>
+					<div>
+						<span>Best: <%=player.legendStatistics.bestSeason.id%> Season</span>
+						<span><%=player.legendStatistics.bestSeason.trophies%></span>
+					</div>
+				</div>
+				<div id="legend_previous_season">
+					<div>
+						<span></span>
+						<span><%=player.legendStatistics.previousSeason.rank%></span>
+					</div>
+					<div>
+						<span>Previous: <%=player.legendStatistics.previousSeason.id%> Season</span>
+						<span><%=player.legendStatistics.previousSeason.trophies%></span>
+					</div>
+				</div>
+				<div id="legend_trophies">
+					<span>Legend Trophies</span>
+					<span><%=player.legendStatistics.legendTrophies%></span>
+				</div>
+			</div>
+			<%}%>
 			<div class="player-border" id="army_div">
 				<div class="player-card">
 					<div class="player-card-body" id="army_heroes">
@@ -90,11 +124,14 @@
 							<div>Heroes:</div>
 
 							<div class="player-card-heroes">
-								<%player.heroes.forEach((hero)=>{%> <%if (hero.village == "home"){%>
-								<span><%=hero.name%></span>
-								<span><%=hero.level%></span>
-								<span><%=hero.maxLevel%></span>
-								<%}%> <%})%>
+								<%troops[3].heroes.forEach((hero)=>{%>
+								<div class="d-flex flex-column">
+									<img class="player-card-troop-ico" src="<%=hero.url%>" alt="<%=hero.name%>" />
+									<%player.heroes.forEach((playerHero)=>{%> <%if (hero.name == playerHero.name && playerHero.village == "home"){%>
+									<span class="badge bg-primary"><%=playerHero.level%></span>
+								</div>
+
+								<%}%> <%})%> <%})%>
 							</div>
 						</div>
 						<div id="hero_pets"></div>
@@ -103,30 +140,71 @@
 					<div id="army_troops" class="player-card-troops">
 						<div class="player-border">
 							<div>Army</div>
-							<div>
+							<div hidden>
 								<% player.troops.forEach((troop)=>{ %> <%if(troop.village == "home"){%>
 
 								<span><%=troop.name%></span>
 
-								<span><%=troop.level%></span>
-
-								<span><%=troop.maxLevel%></span>
-
 								<%}%> <% }) %>
+							</div>
+							<div class="d-flex flex-wrap justify-content-between">
+								<%troops[0].troops.forEach((troop)=>{%>
+								<div class="d-flex flex-column">
+									<span><img class="player-card-troop-ico" src="<%=troop.url%>" alt="<%=troop.name%>" /></span>
+									<%player.troops.forEach((playerTroop)=>{%> <%if (troop.name == playerTroop.name && playerTroop.village == "home"){%>
+									<span class="badge bg-primary"><%=playerTroop.level%></span>
+									<%}%> <%})%>
+								</div>
+
+								<%})%>
 							</div>
 						</div>
 						<div class="player-border">
 							<div>Spells</div>
-							<div>
+							<div class="d-flex flex-row">
 								<%player.spells.forEach((spell)=>{%>
-								<span><%=spell.name%></span>
-								<span><%=spell.level%></span>
-								<span><%=spell.maxLevel%></span>
+								<div class="d-flex flex-column">
+									<span><%=spell.name%></span>
+									<span class="badge bg-primary"><%=spell.level%></span>
+								</div>
+
 								<%})%>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div id="achievements" class="player-border">
+				<span>Home Village Achievements</span>
+				<div id="home_achievements" class="d-flex flex-column">
+					<%player.achievements.forEach((achievement)=>{%> <%if (achievement.village == "home"){%>
+					<div class="d-flex justify-content-between">
+						<div class="d-flex">
+							<div>
+								<% for (let j=0; j < achievement.stars; j++){%>
+								<span class="achievement-star">*</span>
+								<%}%>
+							</div>
+							<div class="d-flex flex-column">
+								<span><%=achievement.name%></span>
+								<span><%=achievement.info%></span>
+							</div>
+						</div>
+						<div class="">
+							<%if (achievement.value > achievement.target && achievement.target != 1){%> <%=achievement.completionInfo%> <%} else if (achievement.target == 1){%> <%if (achievement.value >= 1){%>
+							<div>Completed</div>
+							<%}%> <%} else {%> <%let valueNow = (achievement.value/achievement.target) * 100%>
+							<div class="progress achievement-progress-div">
+								<div class="progress-bar bg-success achievement-progress-bar" role="progressbar" aria-label="achievement progress" aria-valuenow="<%=valueNow%>" aria-valuemin="0" aria-valuemax="100">
+									<%=achievement.value%> / <%=achievement.target%>
+								</div>
+							</div>
+							<%}%>
+						</div>
+					</div>
+					<%}%> <%})%>
+				</div>
+				<div id="builder_achievements"></div>
 			</div>
 		</div>
 

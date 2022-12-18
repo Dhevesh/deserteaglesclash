@@ -53,31 +53,48 @@ body{
     color: #e9d8a6;
 }
 
-.custom-table{
+.home-leaderboard{
     color: #001219;
+    border: 2px solid #d6ccc2;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
-.custom-table a{
+.home-leaderboard a{
     text-decoration: none;
     color: inherit;
 }
 
-.custom-table a:hover, .rank-table a:focus{
+.home-leaderboard a:hover, .home-leaderboard a:focus{
     text-decoration: underline;
     color: #22333b;
 }
 
+.home-leaderboard-row{
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    
+}
 
 .gold-rank{
     background: gold !important;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
 }
 
 .silver-rank{
     background: silver;
+
 }
 
 .copper-rank{
     background: chocolate;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
 }
 
 .img-xsmall{
