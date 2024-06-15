@@ -1,45 +1,71 @@
-<%include ../partials/header%> <%include ../partials/nav%>
-<div class="container">
-	<div class="name mt-3 mb-3">
-		<img src="<%=clan.badgeUrls.small%>" alt="badge.png" />
-		<span class="clash-font"><%=clan.name%></span>
-	</div>
-	<table class="table table-light custom-table">
-		<thead class="thead-dark clash-font">
-			<tr>
-				<th scope="col">Rank</th>
-				<th scope="col"></th>
-				<th scope="col">Level</th>
-				<th scope="col">Name</th>
-				<th scope="col">Donations</th>
-			</tr>
-		</thead>
-		<tbody>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%include ../partials/header%>
+
+		<title>Clan Manager</title>
+	</head>
+	<body>
+		<%include ../partials/nav%>
+		<div class="container">
+			<div class="name mt-3 mb-3">
+				<img src="<%=clan.badgeUrls.small%>" alt="badge.png" />
+				<span class="clash-font"><%=clan.name%></span>
+			</div>
+
 			<%clan.memberList.forEach((member)=>{ %>
-			<tr>
-				<% var c = ""; %> <% if (member.clanRank > member.previousClanRank){c = "fas fa-sort-up fa-green"; } else if (member.clanRank < member.previousClanRank){ c = "fas fa-sort-down fa-red";} else{c
-				= "fas fa-equals fa-grey"; } %>
-				<td>
-					<%=member.clanRank%><span><i class="<%=c%> font-space"></i></span>
-				</td>
-				<td><img src="<%=member.league.iconUrls.small%>" alt="league.png" /></td>
-				<td><%=member.expLevel%></td>
-				<td>
-					<span class="clash-font"> <a href="/members/%23<%=member.tag.substring(1,100)%>"><%=member.name%></a></span>
-					<% var memberRole = member.role; var memberClass="member-role" %> <%if (memberRole != "leader" && memberRole != "member"){ %> <%if (memberRole == "admin") {%> <% memberRole = "Elder" %>
-					<%}else if(member.role =="coLeader"){ %> <% memberRole = "Co-Leader"; memberClass="co-leader-badge" %> <%} else{ %> <%memberRole = member.role%> %> <%}%> <%} else if(member.role=="leader"){
-					%> <%memberRole = "Leader"; memberClass="leader-badge"%> <%}%>
-					<div class="<%=memberClass%>"><%=memberRole%></div>
-				</td>
-				<td>
-					Troops Donated:
-					<span><%=member.donations%></span>
-				</td>
-			</tr>
-
+			<div class="d-flex flex-column">
+				<div class="d-flex align-items-center member-display" onclick="location.href='/members/%23<%=member.tag.substring(1,100)%>'" style="cursor: pointer">
+					<%let pos = member.clanRank - member.previousClanRank;%>
+					<% var c, r = ""; %> <% if (member.clanRank > member.previousClanRank){c = "fas fa-sort-up fa-green"; r="member-rank-increase" } else if (member.clanRank < member.previousClanRank){ c = "fas fa-sort-down"; r="member-rank-decrease"}
+					else{c = "fas fa-equals"; r="member-rank-no-change" } %>
+					<div class="mx-2 d-flex badge <%=r%> center">
+						<span><%=member.clanRank%></span> 
+						<div class="d-flex flex-column mx-2">
+							<%if (pos != 0){%>
+								<%if (pos < 0){%>
+									<span><%=pos%></span>
+									<span><i class="<%=c%>"></i></span>
+								<%} else {%>
+									<span class="">
+										<i class="<%=c%>"></i>
+										
+									</span>
+									<span>+<%=pos%></span>
+									
+								<%}%>
+								
+							<%} else {%>
+								<span><i class="<%=c%>"></i></span>
+							<%}%>
+						</div>
+						
+					</div>
+					<div class="mx-2"><img src="<%=member.league.iconUrls.small%>" alt="league.png" /></div>
+					<div class="mx-2 expLevel center"><span><%=member.expLevel%></span></div>
+					<div class="mx-2">
+						<span class="clash-font"> <a href="/members/%23<%=member.tag.substring(1,100)%>"><%=member.name%></a></span>
+						<% var memberRole = member.role; var memberClass="member-badge member-role" %> <%if (memberRole != "leader" && memberRole != "member"){ %> <%if (memberRole == "admin") {%> <% memberRole =
+						"Elder"; memberClass="elder-badge" %> <%}else if(member.role =="coLeader"){ %> <% memberRole = "Co-Leader"; memberClass="co-leader-badge" %> <%} else{ %> <%memberRole = member.role%> %>
+						<%}%> <%} else if(member.role=="leader"){ %> <%memberRole = "Leader"; memberClass="leader-badge"%> <%}%>
+						<div class="<%=memberClass%>"><%=memberRole%></div>
+					</div>
+					<div class="mx-2">
+						Troops Donated:
+						<span><%=member.donations%></span>
+					</div>
+					<div class="mx-2">
+						Troops Received:
+						<span><%=member.donationsReceived%></span>
+					</div>
+					<div class="mx-2">
+						<i class="fa fa-trophy"></i>
+						<span><%=member.trophies%></span>
+					</div>
+				</div>
+			</div>
 			<%})%>
-		</tbody>
-	</table>
-</div>
-
-<%include ../partials/footer%>
+		</div>
+		<%include ../partials/footer%>
+	</body>
+</html>

@@ -1,0 +1,378 @@
+[
+    {
+        "troops": [
+            {
+                "name": "Barbarian",
+                "url": "/assets/images/troops/home/icon_barbarian.png"
+            },
+            {
+                "name": "Archer",
+                "url": "/assets/images/troops/home/icon_archer.png"
+            },
+            {
+                "name": "Giant",
+                "url": "/assets/images/troops/home/icon_giant.png"
+            },
+            {
+                "name": "Goblin",
+                "url": "/assets/images/troops/home/icon_goblin.png"
+            },
+            {
+                "name": "Wall Breaker",
+                "url": "/assets/images/troops/home/icon_wallbreaker.png"
+            },
+            {
+                "name": "Balloon",
+                "url": "/assets/images/troops/home/icon_balloon.png"
+            },
+            {
+                "name": "Wizard",
+                "url": "/assets/images/troops/home/icon_wizard.png"
+            },
+            {
+                "name": "Healer",
+                "url": "/assets/images/troops/home/icon_healer.png"
+            },
+            {
+                "name": "Dragon",
+                "url": "/assets/images/troops/home/icon_dragon.png"
+            },
+            {
+                "name": "P.E.K.K.A",
+                "url": "/assets/images/troops/home/icon_pekka.png"
+            },
+            {
+                "name": "Baby Dragon",
+                "url": "/assets/images/troops/home/icon_babydragon.png"
+            },
+            {
+                "name": "Miner",
+                "url": "/assets/images/troops/home/icon_miner.png"
+            },
+            {
+                "name": "Electro Dragon",
+                "url": "/assets/images/troops/home/icon_electro_dragon.png"
+            },
+            {
+                "name": "Yeti",
+                "url": "/assets/images/troops/home/icon_yeti.png"
+            },
+            {
+                "name": "Dragon Rider",
+                "url": "/assets/images/troops/home/icon_dragon_rider.png"
+            },
+            {
+                "name": "Electro Titan",
+                "url": "/assets/images/troops/home/icon_electro_titan.png"
+            },
+            {
+                "name": "Minion",
+                "url": "/assets/images/troops/home/icon_minion.png"
+            },
+            {
+                "name": "Hog Rider",
+                "url": "/assets/images/troops/home/icon_hogrider.png"
+            },
+            {
+                "name": "Valkyrie",
+                "url": "/assets/images/troops/home/icon_valkyrie.png"
+            },
+            {
+                "name": "Golem",
+                "url": "/assets/images/troops/home/icon_golem.png"
+            },
+            {
+                "name": "Witch",
+                "url": "/assets/images/troops/home/icon_witch.png"
+            },
+            {
+                "name": "Lava Hound",
+                "url": "/assets/images/troops/home/icon_lavahound.png"
+            },
+            {
+                "name": "Bowler",
+                "url": "/assets/images/troops/home/icon_bowler.png"
+            },
+            {
+                "name": "Ice Golem",
+                "url": "/assets/images/troops/home/icon_ice_golem.png"
+            },
+            {
+                "name": "Headhunter",
+                "url": "/assets/images/troops/home/icon_headHunter.png"
+            }
+        ]
+    },
+    {
+        "siege": [
+            {
+                "name": "Wall Wrecker",
+                "url": "/assets/images/troops/siege/Wall_Wrecker.png"
+            },
+            {
+                "name": "Battle Blimp",
+                "url": "/assets/images/troops/siege/Battle_Blimp.png"
+            },
+            {
+                "name": "Stone Slammer",
+                "url": "/assets/images/troops/siege/Stone_Slammer.png"
+            },
+            {
+                "name": "Siege Barracks",
+                "url": "/assets/images/troops/siege/Siege_Barracks.png"
+            },
+            {
+                "name": "Log Launcher",
+                "url": "/assets/images/troops/siege/Log_Launcher.png"
+            },
+            {
+                "name": "Flame Flinger",
+                "url": "/assets/images/troops/siege/Flame_Flinger.png"
+            },
+            {
+                "name": "Battle Drill",
+                "url": "/assets/images/troops/siege/Battle_Drill.png"
+            }
+        ]
+    },
+    {
+        "super": [
+            {
+                "name": "Super Barbarian",
+                "url": ""
+            },
+            {
+                "name": "Super Archer",
+                "url": ""
+            },
+            {
+                "name": "Sneaky Goblin",
+                "url": ""
+            },
+            {
+                "name": "Super Wall Breaker",
+                "url": ""
+            },
+            {
+                "name": "Super Giant",
+                "url": ""
+            },
+            {
+                "name": "Rocket Balloon",
+                "url": ""
+            },
+            {
+                "name": "Super Wizard",
+                "url": ""
+            },
+            {
+                "name": "Super Dragon",
+                "url": ""
+            },
+            {
+                "name": "Inferno Dragon",
+                "url": ""
+            },
+            {
+                "name": "Super Minion",
+                "url": ""
+            },
+            {
+                "name": "Super Valkyrie",
+                "url": ""
+            },
+            {
+                "name": "Super Witch",
+                "url": ""
+            },
+            {
+                "name": "Ice Hound",
+                "url": ""
+            },
+            {
+                "name": "Super Bowler",
+                "url": ""
+            },
+            {
+                "name": "Super Miner",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "heroes": [
+            {
+                "name": "Barbarian King",
+                "url": "/assets/images/troops/home/heroes/icon_barbarianKing.png"
+            },
+            {
+                "name": "Archer Queen",
+                "url": "/assets/images/troops/home/heroes/icon_archerQueen.png"
+            },
+            {
+                "name": "Grand Warden",
+                "url": "/assets/images/troops/home/heroes/icon_grand_warden.png"
+            },
+            {
+                "name": "Royal Champion",
+                "url": "/assets/images/troops/home/heroes/icon_royal-champion.png"
+            }
+        ]
+    },
+    {
+        "pets": [
+            {
+                "name": "L.A.S.S.I",
+                "url": ""
+            },
+            {
+                "name": "Electro Owl",
+                "url": ""
+            },
+            {
+                "name": "Mighty Yak",
+                "url": ""
+            },
+            {
+                "name": "Unicorn",
+                "url": ""
+            },
+            {
+                "name": "Frosty",
+                "url": ""
+            },
+            {
+                "name": "Diggy",
+                "url": ""
+            },
+            {
+                "name": "Poison Lizard",
+                "url": ""
+            },
+            {
+                "name": "Phoenix",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "spells": [
+            {
+                "name": "Lightning Spell",
+                "url": "/assets/images/spells/icon_Lightning_Spell.png"
+            },
+            {
+                "name": "Healing Spell",
+                "url": "/assets/images/spells/icon_Poison_Spell.png"
+            },
+            {
+                "name": "Rage Spell",
+                "url": "/assets/images/spells/icon_Healing_Spell.png"
+            },
+            {
+                "name": "Jump Spell",
+                "url": "/assets/images/spells/icon_Jump_Spell.png"
+            },
+            {
+                "name": "Freeze Spell",
+                "url": "/assets/images/spells/icon_Freeze_Spell.png"
+            },
+            {
+                "name": "Poison Spell",
+                "url": "/assets/images/spells/icon_Poison_Spell.png"
+            },
+            {
+                "name": "Earthquake Spell",
+                "url": "/assets/images/spells/icon_Earthquake_Spell.png"
+            },
+            {
+                "name": "Haste Spell",
+                "url": "/assets/images/spells/icon_Haste_Spell.png"
+            },
+            {
+                "name": "Clone Spell",
+                "url": "/assets/images/spells/icon_Clone_Spell.png"
+            },
+            {
+                "name": "Skeleton Spell",
+                "url": "/assets/images/spells/icon_Skeleton_Spell.png"
+            },
+            {
+                "name": "Bat Spell",
+                "url": "/assets/images/spells/icon_Bat_Spell.png"
+            },
+            {
+                "name": "Invisibility Spell",
+                "url": "/assets/images/spells/icon_Invisibility_Spell.png"
+            },
+            {
+                "name": "Recall Spell",
+                "url": "/assets/images/spells/icon_Recall_Spell.png"
+            }
+        ]
+    },
+    {
+        "townhalls": [
+            {
+                "name": "1",
+                "url": "/assets/images/townhalls/th1.png"
+            },
+            {
+                "name": "2",
+                "url": "/assets/images/townhalls/th2.png"
+            },
+            {
+                "name": "3",
+                "url": "/assets/images/townhalls/th3.png"
+            },
+            {
+                "name": "4",
+                "url": "/assets/images/townhalls/th4.png"
+            },
+            {
+                "name": "5",
+                "url": "/assets/images/townhalls/th5.png"
+            },
+            {
+                "name": "6",
+                "url": "/assets/images/townhalls/th6.png"
+            },
+            {
+                "name": "7",
+                "url": "/assets/images/townhalls/th7.png"
+            },
+            {
+                "name": "8",
+                "url": "/assets/images/townhalls/th8.png"
+            },
+            {
+                "name": "9",
+                "url": "/assets/images/townhalls/th9.png"
+            },
+            {
+                "name": "10",
+                "url": "/assets/images/townhalls/th10.png"
+            },
+            {
+                "name": "11",
+                "url": "/assets/images/townhalls/th11.png"
+            },
+            {
+                "name": "12",
+                "url": "/assets/images/townhalls/th12.png"
+            },
+            {
+                "name": "13",
+                "url": "/assets/images/townhalls/th13.png"
+            },
+            {
+                "name": "14",
+                "url": "/assets/images/townhalls/th14.png"
+            },
+            {
+                "name": "15",
+                "url": "/assets/images/townhalls/th15.png"
+            }
+        ]
+    }
+]

@@ -1,12 +1,33 @@
-<%include partials/header%>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%include partials/header%>
 
-<body>
-    <div class="container">
-        <form action="/search" method="POST">
-            <input type="text" name="clan">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-</body>
+		<title>Clan Manager</title>
+	</head>
 
-<%include partials/footer%>
+	<body>
+		<%include partials/nav%>
+		<div class="container">
+			<div class="mt-3">
+				<div id="clan_search">
+					<h3 class="clash-font-sm">Looking For A Clan?</h3>
+					<form action="/search" method="POST">
+						<input class="form-control-sm" type="text" name="clan" />
+						<button class="btn custom-btn clash-font-sm" type="submit">Search</button>
+					</form>
+				</div>
+
+				<div id="player_search">
+					<h3 class="clash-font-sm">Looking For A Player?</h3>
+					<form action="/members" method="POST">
+						<input class="form-control-sm" type="text" name="player" />
+						<button class="btn custom-btn clash-font-sm" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="fixed-bottom"><%include partials/footer%></div>
+		<script src="./controllers/clans.js"></script>
+	</body>
+</html>
