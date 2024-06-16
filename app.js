@@ -5,10 +5,10 @@ const request = require('request');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const apiKey_one =
-	'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjFkMzBhYmRmLTdjMzgtNGQ4NC04Y2Y4LTU3ZTJkZmE5ZjRmMCIsImlhdCI6MTY3MzM1OTUyOSwic3ViIjoiZGV2ZWxvcGVyLzk1NTBhOWQ1LTExZjgtYTFmYy1jYzk2LTU5NzVhOGEyMWMwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjAuMC4wLjAiXSwidHlwZSI6ImNsaWVudCJ9XX0.Ijd5lv0V9BrBla38qc7okj0rK__K5ukmnIC2tmqboccXfs5_RkQLKSrB3A-c8CbyX_w-543j50a1gNVIILTgNw';
-const apiKey_two =
-	'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjhkNzI5OTg1LTkzY2QtNGM1Yy1iMTNmLTdlMDU4NzczNjZkOCIsImlhdCI6MTY3MTU2NzY3OCwic3ViIjoiZGV2ZWxvcGVyLzk1NTBhOWQ1LTExZjgtYTFmYy1jYzk2LTU5NzVhOGEyMWMwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjQxLjI0Ni4zMS4xOTIiXSwidHlwZSI6ImNsaWVudCJ9XX0.41_gFa-_dMr5GVX3L64IggxwOeZIcy5DPvOxr6NyxsD9MeXPM8iOJZrY9eoBhKPgVy-VernG5cv_lzSP0jFvuA';
+require('dotenv').config()
+
+const clash_key = process.env.api_key;
+
 
 const User = require('./models/user');
 
@@ -23,7 +23,7 @@ var clanTag;
 app.locals.clanTag = '';
 app.locals.playerTag = '';
 var playerTag;
-const token = `Bearer ${apiKey_one}`;
+const token = `Bearer ${clash_key}`;
 
 var leagues = {
 	uri: 'https://api.clashofclans.com/v1/leagues/',
