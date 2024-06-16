@@ -1,0 +1,215 @@
+/*bootstrap overrides*/
+.bg-dark{
+    background: #001219 !important;
+}
+
+.bg-warning{
+    color: #ca6702 !important;
+    color: #fdf0d5 !important;
+}
+
+/*bootstrap overrides*/
+
+.disabled{
+    opacity: 0.5;
+}
+
+.enabled{
+    opacity: 1;
+}
+
+.custom-bg{
+    background: linear-gradient(to right, #001d3d, #003566);
+}
+
+.player-border{
+    border: 2px solid #d6ccc2;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.player-card{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.player-card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.player-card-body-league{
+    justify-content: space-evenly;
+}
+
+.player-card-label{
+    float: left;
+    margin-right: 10px;
+}
+
+.player-card-badge{
+    border: 2px solid #d5bdaf;
+    color: #0d1b2a;
+    border-radius: 10px;
+    background: #f5ebe0;
+    float: right;
+    min-width: 60px;
+    width: fit-content;
+    text-align: center;
+}
+
+.player-card-gutter{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #d6ccc2;
+    color: #0d1b2a;
+    border-radius: 0 0 4px 4px;
+}
+
+/* .player-label{
+    float: left;
+    background: #ccd5ae;
+    color: #0d1b2a;
+    border: 2px solid #e9edc9;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+} */
+
+.player-label{
+    display: flex;
+}
+
+.player-townhall{
+    min-width: fit-content;
+    min-height: fit-content;
+    width: 200px;
+    height: 200px;
+}
+
+.player-card-heroes{
+    display: flex;
+}
+
+.player-card-troops{
+    display: flex;
+    flex-direction: column;
+}
+
+.player-card-troop-ico{
+    height: 48px;
+    width: 48px;
+    border: 1px solid #d6ccc2;
+    border-radius: 4px;
+}
+
+.achievement-checked{
+    color: #9d4edd;
+}
+
+.achievement-un-checked{
+    color: #5e548e;
+}
+
+.player-img {
+    display: block;
+}
+
+.player-img-thumbnail {
+    position: relative;
+    display: inline-block;
+}
+
+.player-thumbnail-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    
+}
+
+.player-thumbnail-army-caption {
+    position: absolute;
+    bottom: -20%;
+    left: 30%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    
+}
+
+.war-status{
+    color: #0d1b2a;
+    
+}
+
+.clan-war-in{
+    background: green;
+    padding: 10px;
+    border: 1px solid #d6ccc2;
+    border-radius: 10px;
+}
+
+.clan-war-out{
+    background: red;
+    padding: 10px;
+    border: 1px solid #d6ccc2;
+    border-radius: 4px;
+}
+
+.custom-progress{
+    background: #5e548e;
+    color:#3c096c;
+}
+
+.custom-progress-bg{
+    
+    background: #9f86c0;
+    
+}
+
+.custom-progress-text{
+    position: absolute;
+    z-index: 0;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.header-band{
+    background: linear-gradient(to right, #9f86c0, #be95c4);
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    color: #231942;
+}
+
+.achievement-display{
+    background: linear-gradient(to right, #001d3d, #003566);
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 5px;
+    
+}
+
+/*custom animation*/
+
+.fire {
+    animation: burn 1.5s linear infinite alternate;
+  }
+  
+  @keyframes burn {
+    from { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
+    45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
+    70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
+    to   { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
+  }
+

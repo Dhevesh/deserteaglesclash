@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%include ../partials/header%>
+		<link rel="stylesheet" href="../stylesheets/player.css" />
+	</head>
+	<body>
+		<%include ../partials/nav%>
+		<div class="container">
+			<div class="d-flex flex-column">
+				<a href="/members"><-Back</a>
+				<div class="player-border custom-bg">
+					<div class="player-card pt-4">
+						<div class="player-card-body">
+							<div id="player_personal_info">
+								<div class="mb-3">
+									<span class="expLevel clash-font"><%=player.expLevel%></span>
+									<span class="clash-font h3"><%=player.name%></span>
+								</div>
+								
+
+								<div class="player-label" id="player_labels">
+									<%player.labels.forEach((label)=>{%>
+									<div class=""><img src="<%=label.iconUrls.small%>" alt="<%label.name%>" srcset="" /></div>
+									<%})%>
+								</div>
+							</div>
+						</div>
+						<hr class="custom-vr" />
+						<div class="player-card-body">
+							<div id="player_clan" class="d-flex flex-column align-items-center">
+								<div id="player_clan_name" class="clash-font">
+									<span class="h4"><%=player.clan.name%></span>
+								</div>
+								<div id="player_clan_badge" class="d-flex flex-column align-items-center mb-3 clash-font">
+									<img src="<%=player.clan.badgeUrls.medium%>" alt="" srcset="" />
+									<%if (player.role != "leader" && player.role != "player"){ %> <%if (player.role == "admin") {%>
+									<span class="elder-badge">Elder</span>
+									<%}else if(player.role == "coLeader"){ %>
+									<span class="co-leader-badge">Co-Leader</span>
+									<%}%> <%} else{ %>
+									<span class=""><%=player.role%></span>
+									<%} %>
+								</div>
+								<div id="war_status" class="war-status clash-font">
+									<%let clanWars = "";%> <%if (player.warPreference == "in"){clanWars = "clan-war-in"%> <%} else {clanWars = "clan-war-out"}%>
+									<span class="<%=clanWars%>">Clan Wars</span>
+								</div>
+							</div>
+						</div>
+						<hr class="custom-vr" />
+						<div id="current_league_stats" class="player-card-body">
+							<div id="league" class="d-flex flex-column align-items-center">
+								<%if (typeof(player.league) != 'undefined'){%>
+								<div id="league_name" class="d-flex flex-column">
+									<span class="clash-font"><%=player.league.name%></span>
+								</div>
+								<%}%>
+								<div class="player-img-thumbnail">
+									<%if(typeof(player.league) != 'undefined'){%>
+									<img class="player-img" src="<%=player.league.iconUrls.medium%>" alt="league.png" />
+									<%} else{ %>
+									<img src="https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png" alt="unranked.png" style="width: 300px; height: 300px" />
+									<%}%> <%if ("legendStatistics" in player && player.legendStatistics.legendTrophies > 0){%>
+									<div class="player-thumbnail-caption h3"><%=player.legendStatistics.currentSeason.rank%></div>
+									<%}%>
+								</div>
+								<div class="d-flex mb-2">
+									<span class="px-2">Current: </span>
+									<span class="player-card-badge"><span class="fa fa-trophy"></span> <%=player.trophies%></span>
+								</div>
+							</div>
+
+							<div class="d-flex justify-content-around">
+								<div class="d-flex flex-column align-items-center">
+									<span> All time best: </span>
+									<span class="player-card-badge"><span class="fa fa-trophy"></span> <%=player.bestTrophies%> </span>
+								</div>
+								<div class="d-flex flex-column align-items-center">
+									<span>War Stars Won:</span>
+									<span class="player-card-badge"><span class="fa fa-star"></span> <%=player.warStars%></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="player-card-gutter" id="">
+						<div id="troops_donated">
+							<span class="player-card-label">Troops Donated:</span>
+							<span class="player-card-badge"><span class="fa fa-arrow-up"></span> <%=player.donations%></span>
+						</div>
+						<div id="troops_received">
+							<span class="player-card-label">Troops Received:</span>
+							<span class="player-card-badge"><span class="fa fa-arrow-down"></span> <%=player.donationsReceived%></span>
+						</div>
+						<div id="attacks_won">
+							<span class="player-card-label">Attacks Won:</span>
+							<span class="player-card-badge"><span class="far fa-axe-battle"></span><%=player.attackWins%></span>
+						</div>
+						<div id="defenses_won">
+							<span class="player-card-label">Defenses Won:</span>
+							<span class="player-card-badge"><i class="fa-solid fa-shield"></i><%=player.defenseWins%></span>
+						</div>
+					</div>
+				</div>
+
+				<%if ("legendStatistics" in player && player.legendStatistics.legendTrophies > 0){%>
+				<div class="player-border custom-bg">
+					<div class="header-band">
+						<span class="clash-font">Legend League Tournament</span>
+					</div>
+					<div id="legend_stats" class="d-flex justify-content-between">
+						<div id="legend_best" class="d-flex align-items-center">
+							<div class="player-img-thumbnail">
+								<img class="player-img" src="https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png" alt="league.png" />
+								<div class="player-thumbnail-caption"><%=player.legendStatistics.bestSeason.rank%></div>
+							</div>
+							<div class="d-flex flex-column">
+								<span>Best: <%=player.legendStatistics.bestSeason.id%> Season</span>
+								<span><i class="fa fa-trophy"></i> <%=player.legendStatistics.bestSeason.trophies%></span>
+							</div>
+						</div>
+						<hr class="custom-vr-x-sm" />
+						<div id="legend_previous_season" class="d-flex align-items-center">
+							<%if ("previousSeason" in player.legendStatistics){%>
+							<div class="player-img-thumbnail">
+								<img class="player-img" src="https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png" alt="league.png" />
+								<div class="player-thumbnail-caption"><%=player.legendStatistics.previousSeason.rank%></div>
+							</div>
+							<div class="d-flex flex-column position-relative">
+								<span>Previous: <%=player.legendStatistics.previousSeason.id%> Season</span>
+								<span><i class="fa fa-trophy"></i> <%=player.legendStatistics.previousSeason.trophies%></span>
+							</div>
+							<%}%>
+						</div>
+						<hr class="custom-vr-x-sm" />
+						<div id="legend_trophies" class="d-flex align-items-center p-3">
+							<div class="d-flex flex-column">
+								<span>Legend Trophies</span>
+								<span><i class="fa fa-trophy"></i> <%=player.legendStatistics.legendTrophies%></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<%}%> <%let level_class="bg_primary"%>
+				<div class="player-border custom-bg d-flex flex-column" id="player_army">
+					<div>
+						<%assets[6].townhalls.forEach((townhall)=>{%> <%if (townhall.name == player.townHallLevel){%>
+						<img class="player-townhall" src="<%=townhall.url%>" alt="<%=townhall.name%>" srcset="" />
+						<%}%> <%})%>
+					</div>
+
+					<div class="" id="army_heroes">
+						<div class="mx-2 player-border" id="hero_div">
+							<div class="header-band clash-font"><span>Heroes</span></div>
+							<div class="d-flex flex-row">
+								<%assets[3].heroes.forEach((hero)=>{%> 
+									<%let active = "";%> 
+									<%const found = player.heroes.some(el => el.name == hero.name);%> 
+									<%if (!found) {active = "disabled";}%>
+								<div class="d-flex flex-column p-1 <%=active%> player-img-thumbnail">
+									<img class="player-card-troop-ico player-img" src="<%=hero.url%>" alt="<%=hero.name%>" />
+									
+										<%player.heroes.forEach((playerHero)=>{%> 
+											<%if (hero.name == playerHero.name && playerHero.village == "home"){%> 
+												<%if (playerHero.level == playerHero.maxLevel){%> 
+													<%level_class = "bg-warning fire"%> 
+												<%} else{%> 
+													<%level_class = "bg-dark"%> 
+												<%}%>
+												<span class="badge <%=level_class%> player-thumbnail-army-caption"><%=playerHero.level%></span>
+											<%}%>
+											
+										<%})%>
+								</div>
+								<%})%>
+							</div>
+						</div>
+						<div class="player-border mx-2" id="hero_pet">
+							<div class="header-band"><span class="clash-font">Hero Pets</span></div>
+						</div>
+					</div>
+
+					<div id="army_troops" class="player-card-troops mx-2">
+						<div class="player-border">
+							<div class="header-band clash-font">Troops</div>
+							<div class="d-flex flex-wrap">
+								<%assets[0].troops.forEach((troop)=>{%> <%let active = "";%> <%const found = player.troops.some(el => el.name == troop.name);%> <%if (!found) active = "disabled";%>
+								<div class="d-flex flex-column p-1 <%=active%> player-img-thumbnail">
+									<span><img class="player-card-troop-ico player-img-thumbnail" src="<%=troop.url%>" alt="<%=troop.name%>" /></span>
+									<%player.troops.forEach((playerTroop)=>{%> <%if (troop.name == playerTroop.name && playerTroop.village == "home"){%> <%if (playerTroop.level == playerTroop.maxLevel){%> <%
+									level_class = "bg-warning fire"%> <%} else{%> <% level_class = "bg-dark"%> <%}%>
+									<span class="badge <%=level_class%> player-thumbnail-army-caption"><%=playerTroop.level%></span>
+									<%}%> <%})%>
+								</div>
+
+								<%})%>
+							</div>
+						</div>
+						<div class="player-border">
+							<div class="header-band clash-font">Spells</div>
+							<div class="d-flex flex-row">
+								<%assets[5].spells.forEach((spell)=>{%> <%let active = "";%> <%const found = player.spells.some(el => el.name == spell.name);%> <%if (!found) active = "disabled";%>
+								<div class="d-flex flex-column p-1 <%=active%> player-img-thumbnail">
+									<span><img class="player-card-troop-ico player-img" src="<%=spell.url%>" alt="<%=spell.name%>" /></span>
+									<%player.spells.forEach((playerSpell)=>{%> <%if (spell.name == playerSpell.name && playerSpell.village == "home"){%> <%if (playerSpell.level == playerSpell.maxLevel){%> <%level_class
+									= "bg-warning fire"%> <%} else{%> <% level_class = "bg-dark"%> <%}%>
+									<span class="badge <%=level_class%> player-thumbnail-army-caption"><%=playerSpell.level%></span>
+									<%}%> <%})%>
+								</div>
+								<%})%>
+							</div>
+						</div>
+						<div class="player-border">
+							<div class="header-band clash-font">Siege Machines</div>
+							<div class="d-flex flex-row">
+								<%assets[1].siege.forEach((siege)=>{%> <%let active = "";%> <%const found = player.troops.some(el => el.name == siege.name);%> <%if (!found) active = "disabled";%>
+								<div class="d-flex flex-column p-1 <%=active%> player-img-thumbnail">
+									<span><img class="player-card-troop-ico player-img" src="<%=siege.url%>" alt="<%=siege.name%>" /></span>
+									<%player.troops.forEach((playerTroop)=>{%> <%if (siege.name == playerTroop.name && playerTroop.village == "home"){%> <%if (playerTroop.level == playerTroop.maxLevel){%> <%level_class
+									= "bg-warning fire"%> <%} else{%> <%level_class = "bg-dark"%> <%}%>
+									<span class="badge <%=level_class%> player-thumbnail-army-caption"><%=playerTroop.level%></span>
+									<%}%> <%})%>
+								</div>
+								<%})%>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="achievements" class="player-border">
+					<div class="header-band">
+						<span class="clash-font">Home Village Achievements</span>
+					</div>
+
+					<div id="home_achievements" class="d-flex flex-column">
+						<%player.achievements.forEach((achievement)=>{%> <%if (achievement.village == "home" && achievement.name != "Keep Your Account Safe!"){%>
+						<div class="d-flex justify-content-between achievement-display">
+							<div class="d-flex">
+								<div class="mx-2 my-2">
+									<% for (let j=0; j < achievement.stars; j++){%>
+									<span class="fa fa-star achievement-checked"></span>
+									<%}%> <% for (let j=3; j > achievement.stars ; j--){%>
+									<span class="fa fa-star achievement-un-checked"></span>
+									<%}%>
+								</div>
+								<div class="d-flex flex-column">
+									<span class="clash-font"><%=achievement.name%></span>
+									<span><%=achievement.info%></span>
+								</div>
+							</div>
+							<div class="mx-2 my-3">
+								<%if (achievement.value > achievement.target && achievement.target != 1){%> <%=achievement.completionInfo%> <%} else if (achievement.target == 1){%> <%if (achievement.value >= 1){%>
+								<div><span class="fa fa-check" style="color: #9d4edd"></span></div>
+								<%}%> <%} else {%> <%let valueNow = (achievement.value/achievement.target) * 100%>
+								<div
+									class="progress custom-progress"
+									role="progressbar"
+									aria-label="achievement progress"
+									aria-valuenow="<%=valueNow%>"
+									aria-valuemin="0"
+									aria-valuemax="100"
+									style="width: 200px; max-width: 100%"
+								>
+									<span class="custom-progress-text"><%=achievement.value%> / <%=achievement.target%></span>
+									<span class="progress-bar custom-progress-bg px-1" style="width: <%=valueNow%>%"></span>
+								</div>
+								<%}%>
+							</div>
+						</div>
+						<%}%> <%})%>
+					</div>
+					<div id="builder_achievements"></div>
+				</div>
+			</div>
+		</div>
+
+		<%include ../partials/footer%>
+	</body>
+</html>
