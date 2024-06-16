@@ -40,11 +40,9 @@ const assets = require('./models/assets.json');
 
 // ROUTES
 // INDEX
-/* app.get('/', (req, res) => {
+app.get('/', (req, res) => {
 	res.redirect('/search');
-}); */
-
-app.get('/', (req, res)=>res.send("Express on Vercel"));
+});
 
 app.get('/search', (req, res) => {
 	res.render('clanSearch');
