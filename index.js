@@ -5,13 +5,14 @@ const request = require('request');
 const rp = require('request-promise');
 const mongoose = require('mongoose');
 const fs = require('fs');
+const path = require("path")
 require('dotenv').config()
 
 const clash_key = process.env.api_key;
 
 
 const User = require('./models/user');
-
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
